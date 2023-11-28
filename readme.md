@@ -15,3 +15,9 @@
 ```
   go mod tidy
 ```
+
+## Close DB
+```
+  defer db.Close()
+```
+O defer é usado para executar a ação após o retorno da função que o chamou.
