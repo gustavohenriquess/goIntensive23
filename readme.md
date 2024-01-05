@@ -1,87 +1,124 @@
-# Go 
+# Go - Golang
+
+This repository was created to study Golang concepts including GoRoutines, testing, database (sqlite3), RabbitMQ, docker and K8S (Kubernetes)
+
+![Gopher studying](./imgs/Gopher_1.png)<br>
 
 
-## start project
+[First class](https://www.youtube.com/watch?v=_vs-mYavJMA)<br>
+[Second class](https://www.youtube.com/watch?v=Uaws_IizYF4)<br>
+[Third class](https://www.youtube.com/watch?v=8PVrWUP2HIA)
+
+
+## Dependencies
+![](https://img.shields.io/badge/Go-%5E1.19-brightgreen)<br>
+![](https://img.shields.io/badge/Kind-%5E0.20.0-brightgreen)<br>
+![](https://img.shields.io/badge/kubectl-%5E1.28.2-brightgreen)<br>
+
+## Go Tips
+
+## Go Routines
+
+Go has its own Threads, which are known as Go Routines: Co-Routines / userland / light threads / green and consume 2kb of memory
+
+![Gopher Go Routines](./imgs/Gopher_2.jpeg)
+
+
+## Go Channels
+
+Go Channels was created to solve race conditions
+
+## Race Conditions
+Race condition is a common problem that occurs in concurrent programming, where two threads modify the same resource simultaneously, which can generate unexpected results.
+
+
+## <img alt="Gopher Go Channels" src="./imgs/Channels.png" width="70%" height="70%" />
+
+## <img alt="Gopher Go Channels" src="./imgs/HTTP.png" width="70%" height="70%" />
+
+## <img alt="Gopher Go Channels" src="./imgs/Gopher_3.webp" width="70%" height="70%" />
+
+### start project
 ```
   go mod init github.com/gustavohenriquess/go-intensive23
 ```
 
-## Test project
+### Test project
 ```
   go test ./...
 ```
 
-## Install packages
+### Install packages
 ```
   go mod tidy
 ```
 
-## Close DB
+### Close DB
 ```
   defer db.Close()
 ```
-O defer é usado para executar a ação após o retorno da função que o chamou.
+defer is used to perform the action after the function that called it returns
 
 
 # Kubernets
 
-- Criar Cluster com Kind
+### Create Cluster with Kind
 ```
   kind create cluster
 ```
 
-- Pegar as informações do cluster
+### Get cluster information
 ```
   kubectl cluster-info
 ```
 
-- Visualizar os nodes
+### View the nodes
 ```
   kubectl get nodes
 ```
 
-- Criar o Pod
+### Create the Pod
 ```
   kubectl create -f pod.yaml
 ```
 
-- Apagar o Pod
+### Delete the Pod
 ```
   kubectl delete -f pod.yaml
 ```
 
-- Visualizar os Pods
+### View Pods
 ```
   kubectl get pods
 ```
 
-- Visualizar os Pods com mais detalhes
+### View Pods in more detail
 ```
   kubectl get pods -o wide
 ```
 
-- Criar um service
+### Create a service
 ```
   kubectl create -f service.yaml
 ```
 
-- Visualizar os services
+### View services
 ```
   kubectl get svc
 ```
 
-- Visualizar os services com mais detalhes
+### View services in more detail
 ```
   kubectl get svc -o wide
 ```
 
-- Apagar o service
+### Delete the service
 ```
   kubectl delete -f service.yaml
 ```
 
 
-- Rodar o serviço localmente
+### Run the service locally
 ```
   kubectl port-forward svc/goapp-service 8888:8888
 ```
