@@ -15,20 +15,43 @@ This repository was created to study Golang concepts including GoRoutines, testi
 ![](https://img.shields.io/badge/Kind-%5E0.20.0-brightgreen)<br>
 ![](https://img.shields.io/badge/kubectl-%5E1.28.2-brightgreen)<br>
 
+## How to Use
+To run the project, you must have the dependencies installed, then run the commands below
+
+### Run on Windows
+
+
+### Run on Unix (Linux and Mac)
+
+Ned to have Golang installed
+```
+  make || make local
+```
+
+To execute the project with k8s run the command below (need to have kind installed)
+```
+  make k8s_up
+```
+
+To clear the project with k8s run the command below
+```
+  make k8s_down
+```
+This command will delete the cluster, the pod and the service
+
 ## Go Tips
 
-## Go Routines
+### Go Routines
 
 Go has its own Threads, which are known as Go Routines: Co-Routines / userland / light threads / green and consume 2kb of memory
 
 ![Gopher Go Routines](./imgs/Gopher_2.jpeg)
 
-
-## Go Channels
+### Go Channels
 
 Go Channels was created to solve race conditions
 
-## Race Conditions
+#### Race Conditions
 Race condition is a common problem that occurs in concurrent programming, where two threads modify the same resource simultaneously, which can generate unexpected results.
 
 
