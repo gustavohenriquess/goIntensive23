@@ -1,15 +1,16 @@
 package usecase
 
-import "github.com/gustavohenriquess/go-intensive23/internal/entity"
+import (
+	"github.com/gustavohenriquess/go-intensive23/internal/entity"
+)
 
 type OrderInput struct {
-	ID    string  `json:"id"`
 	Price float64 `json:"price"`
 	Tax   float64 `json:"tax"`
 }
 
 type OrderOutput struct {
-	ID         string
+	ID         int64
 	Price      float64
 	Tax        float64
 	FinalPrice float64
@@ -27,8 +28,7 @@ func NewCalculateFinalPrice(orderRepository entity.OrderRepositoryInterface) *Ca
 }
 
 func (c *CalculateFinalPrice) Execute(input OrderInput) (*OrderOutput, error) {
-
-	order, err := entity.NewOrder(input.ID, input.Price, input.Tax)
+	order, err := entity.NewOrder(input.Price, input.Tax)
 	if err != nil {
 		return nil, err
 	}
@@ -38,13 +38,13 @@ func (c *CalculateFinalPrice) Execute(input OrderInput) (*OrderOutput, error) {
 		return nil, err
 	}
 
-	err = c.OrderRepository.Save(order)
+	id, err := c.OrderRepository.Save(order)
 	if err != nil {
 		return nil, err
 	}
 
 	return &OrderOutput{
-		ID:         order.ID,
+		ID:         id,
 		Price:      order.Price,
 		Tax:        order.Tax,
 		FinalPrice: order.FinalPrice,

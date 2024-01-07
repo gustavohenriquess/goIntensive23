@@ -16,14 +16,20 @@ func NewOrderRepository(db *sql.DB) *OrderRepository {
 	}
 }
 
-func (r *OrderRepository) Save(order *entity.Order) error {
-	_, err := r.Db.Exec("INSERT INTO orders (id, price, tax, final_price) VALUES (?, ?, ?, ?)",
-		order.ID, order.Price, order.Tax, order.FinalPrice)
+func (r *OrderRepository) Save(order *entity.Order) (int64, error) {
+	result, err := r.Db.Exec("INSERT INTO orders (price, tax, final_price) VALUES (?, ?, ?)",
+		order.Price, order.Tax, order.FinalPrice)
+
 	if err != nil {
-		return err
+		return 0, err
 	}
 
-	return nil
+	id, err := result.LastInsertId()
+	if err != nil {
+		return 0, err
+	}
+
+	return id, nil
 }
 
 func (r *OrderRepository) GetTotalTransactions() (int, error) {

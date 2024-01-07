@@ -1,6 +1,6 @@
 package entity
 
 type OrderRepositoryInterface interface {
-	Save(order *Order) error
+	Save(order *Order) (int64, error)
 	GetTotalTransactions() (int, error)
 }

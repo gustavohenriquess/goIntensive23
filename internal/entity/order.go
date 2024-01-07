@@ -3,7 +3,6 @@ package entity
 import "errors"
 
 type Order struct {
-	ID         string
 	Price      float64
 	Tax        float64
 	FinalPrice float64
@@ -22,9 +21,6 @@ func (o *Order) CalculateFinalPrice() error {
 }
 
 func (o *Order) Validade() error {
-	if o.ID == "" {
-		return errors.New("id is required")
-	}
 	if o.Price <= 0 {
 		return errors.New("price must be greater than zero")
 	}
@@ -34,9 +30,8 @@ func (o *Order) Validade() error {
 	return nil
 }
 
-func NewOrder(id string, price float64, tax float64) (*Order, error) {
+func NewOrder(price float64, tax float64) (*Order, error) {
 	order := &Order{
-		ID:    id,
 		Price: price,
 		Tax:   tax,
 	}

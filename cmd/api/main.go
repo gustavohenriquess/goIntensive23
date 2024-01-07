@@ -19,7 +19,7 @@ func main() {
 }
 
 func OrderHandler(c echo.Context) error {
-	order, _ := entity.NewOrder("4", 10.0, 0.1)
+	order, _ := entity.NewOrder(10.0, 0.1)
 	err := order.CalculateFinalPrice()
 	if err != nil {
 		return c.JSON(http.StatusInternalServerError, err)
