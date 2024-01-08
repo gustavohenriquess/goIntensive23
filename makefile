@@ -1,4 +1,4 @@
-.PHONY: k8s_up k8s_down go_local docker build_docker push_docker rmi_docker cluster_up pod_up service_up local_up down service_down pod_down cluster_down 
+.PHONY: k8s_up k8s_down go_api go_msg docker build_docker push_docker rmi_docker cluster_up pod_up service_up local_up down service_down pod_down cluster_down 
 
 DOCKER_ACC = guughs
 APP_NAME = gointensive23
@@ -7,16 +7,22 @@ POD_FILE = k8s/deployment.yaml
 SERVICE_FILE = k8s/service.yml
 SLEEP_TIME = 15
 
-all: go_local
+all: go_api
 
 k8s_up: docker cluster_up pod_up service_up local_up
 k8s_down: service_down pod_down cluster_down rmi_docker
 docker: build_docker push_docker
 
-go_local:
+go_api:
 	@echo "-----------------------------------------------------------------------------------------------------------------------"
 	@echo "Running local..."
-	go run ./cmd/order/main.go
+	go run ./cmd/api/main.go
+
+
+go_msg:
+	@echo "-----------------------------------------------------------------------------------------------------------------------"
+	@echo "Running local..."
+	go run ./cmd/api/main.go
 
 build_docker:
 	@echo "Building..."

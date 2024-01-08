@@ -24,8 +24,30 @@ To run the project, you must have the dependencies installed, then run the comma
 ### Run on Unix (Linux and Mac)
 
 Ned to have Golang installed
+To execute the API run the command below
 ```
-  make || make local
+  make go_api
+```
+OR
+```
+  go run cmd/api/main.go
+```
+
+To execute the consumer for rabbitMQ run the command below
+> Remember to have the rabbitMQ running and config a Queue named "order" <br/><br/>
+> To run the rabbitMQ with docker run the command: **docker-compose up -d** <br/>
+> To access rabbitMQ management open the link: **http://localhost:15672** <br/>
+> User: guest <br/>
+> Password: guest
+```
+  make go_consumer
+```
+```
+  make go_msg
+```
+OR
+```
+  go run cmd/order/main.go
 ```
 
 To execute the project with k8s run the command below (need to have kind installed)
@@ -33,11 +55,13 @@ To execute the project with k8s run the command below (need to have kind install
   make k8s_up
 ```
 
+> This command will create the cluster, pod and service
+
 To clear the project with k8s run the command below
 ```
   make k8s_down
 ```
-This command will delete the cluster, the pod and the service
+> This command will delete the cluster, the pod and the service that was created
 
 ## Go Tips
 
