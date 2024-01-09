@@ -34,3 +34,22 @@ func Consume(ch *amqp.Channel, out chan amqp.Delivery) error {
 	}
 	return nil
 }
+
+func DeclareQueue(ch *amqp.Channel, queueName []string) error {
+
+	for _, queue := range queueName {
+		_, err := ch.QueueDeclare(
+			queue,
+			true,
+			false,
+			false,
+			false,
+			nil,
+		)
+		if err != nil {
+			return err
+		}
+	}
+
+	return nil
+}

@@ -25,6 +25,13 @@ func main() {
 		panic(err)
 	}
 	defer ch.Close()
+
+	err = rabbitmq.DeclareQueue(ch, []string{"order"})
+	if err != nil {
+		fmt.Println("Erro ao declarar fila")
+		panic(err)
+	}
+
 	msgRabbitmqChannel := make(chan amqp.Delivery)
 	go rabbitmq.Consume(ch, msgRabbitmqChannel) // escutando a fila // trava // T2
 	rabbitmqWorker(msgRabbitmqChannel, uc)      // T1
