@@ -20,11 +20,37 @@ To run the project, you must have the dependencies installed, then run the comma
 
 ### Run on Windows
 
+To execute the API run the command below
+> The API run on 8888 port <br/>
+> To access the API use the URL: **http://localhost:8888/order** <br/>
+> Method: POST <br/>
+> Body: {price: 10.00, tax: 1.5} <br/>
+
+```
+  go run cmd/api/main.go
+```
+OR execute the executable file
+```
+  cmd/api/api.exe
+```
+
+To execute the consumer for rabbitMQ run the command below
+> To run the rabbitMQ with docker run the command: **docker-compose up -d** <br/>
+> To access rabbitMQ management open the link: **http://localhost:15672** <br/>
+> User: guest <br/>
+> Password: guest
+```
+  go run cmd/order/main.go
+```
 
 ### Run on Unix (Linux and Mac)
 
 Ned to have Golang installed
 To execute the API run the command below
+> The API run on 8888 port <br/>
+> To access the API use the URL: **http://localhost:8888/order** <br/>
+> Method: POST <br/>
+> Body: {price: 10.00, tax: 1.5} <br/>
 ```
   make go_api
 ```
@@ -34,14 +60,10 @@ OR
 ```
 
 To execute the consumer for rabbitMQ run the command below
-> Remember to have the rabbitMQ running and config a Queue named "order" <br/><br/>
 > To run the rabbitMQ with docker run the command: **docker-compose up -d** <br/>
 > To access rabbitMQ management open the link: **http://localhost:15672** <br/>
 > User: guest <br/>
 > Password: guest
-```
-  make go_consumer
-```
 ```
   make go_msg
 ```
