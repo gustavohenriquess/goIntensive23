@@ -22,7 +22,7 @@ go_api:
 go_msg:
 	@echo "-----------------------------------------------------------------------------------------------------------------------"
 	@echo "Running local..."
-	go run ./cmd/api/main.go
+	go run ./cmd/order/main.go
 
 build_docker:
 	@echo "Building..."
