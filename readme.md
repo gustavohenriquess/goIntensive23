@@ -18,6 +18,8 @@ This repository was created to study Golang concepts including GoRoutines, testi
 ## How to Use
 To run the project, you must have the dependencies installed, then run the commands below
 
+> remember to clone db.sqlite3 to the location of the file being executed
+
 ### Run on Windows
 
 To execute the API run the command below
