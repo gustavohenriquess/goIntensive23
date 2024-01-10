@@ -45,6 +45,15 @@ To execute the consumer for rabbitMQ run the command below
   go run cmd/order/main.go
 ```
 
+To send a message to rabbitMQ run the command below
+```
+  go run cmd/publisher/main.go
+```
+OR execute the executable file
+```
+  cmd/publisher/publisher.exe
+```
+
 ### Run on Unix (Linux and Mac)
 
 Ned to have Golang installed
@@ -72,6 +81,15 @@ To execute the consumer for rabbitMQ run the command below
 OR
 ```
   go run cmd/order/main.go
+```
+
+To send a message to rabbitMQ run the command below
+```
+  go run cmd/publisher/main.go
+```
+OR execute the executable file
+```
+  cmd/publisher/publisher.exe
 ```
 
 To execute the project with k8s run the command below (need to have kind installed)
