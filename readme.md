@@ -56,7 +56,7 @@ OR execute the executable file
 
 ### Run on Unix (Linux and Mac)
 
-Ned to have Golang installed
+Need to have Golang installed
 To execute the API run the command below
 > The API run on 8888 port <br/>
 > To access the API use the URL: **http://localhost:8888/order** <br/>
